@@ -1,11 +1,9 @@
-
-
-// enums.js
-
-const MyEnum = {
-    Type1: 'Type1',
-    Type2: 'Type2',
-    Type3: 'Type3'
+export const activitiesEnums = {
+    Type1: 'Aventure',
+    Type2: 'Romantique',
+    Type3: 'Horreur',
+    Type4: 'Fantastique',
+    Type5: 'Culinaire',
+    Type6: 'Familiale',
 };
 
-module.exports = MyEnum;
