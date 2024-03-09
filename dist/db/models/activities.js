@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.activities = void 0;
+exports.Activities = void 0;
 const activities_enums_1 = require("./activities-enums");
-function activities(sequelize, DataTypes) {
+function Activities(sequelize, DataTypes) {
     return sequelize.define('Activitie', {
         id: {
             type: DataTypes.INTEGER,
@@ -45,5 +45,5 @@ function activities(sequelize, DataTypes) {
         uptdateAt: true
     });
 }
-exports.activities = activities;
+exports.Activities = Activities;
 //# sourceMappingURL=activities.js.map

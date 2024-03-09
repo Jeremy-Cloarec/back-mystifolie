@@ -1,1 +1,1 @@
-export declare function activities(sequelize: any, DataTypes: any): any;
+export declare function Activities(sequelize: any, DataTypes: any): any;

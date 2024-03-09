@@ -1,4 +1,5 @@
 // Importing routes activities
+
 import findActivitie from './routes/activities/findActivities'
 import findAllActivitie from './routes/activities/findAllActivities'
 import createActivitie from './routes/activities/createActivitie'

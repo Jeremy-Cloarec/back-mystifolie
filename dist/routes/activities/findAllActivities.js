@@ -1,11 +1,11 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const activities_1 = require("../../json/activities");
-function findAllActivitie(app) {
+const { Activities } = require('../../db/models/activities');
+module.exports = (app) => {
     app.get('/mystifolie/activites', (req, res) => {
-        res.json(activities_1.data);
-        console.log(activities_1.data);
+        Activities.findAll()
+            .then(activitie => {
+            const message = 'La liste des activités a bien été récupérée';
+            res.json({ message, data: activitie });
+        });
     });
-}
-exports.default = findAllActivitie;
+};
 //# sourceMappingURL=findAllActivities.js.map

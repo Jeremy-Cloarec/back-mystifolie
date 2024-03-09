@@ -1,16 +1,16 @@
-import {activitiesEnums} from './activities-enums'
+import { activitiesEnums } from './activities-enums'
 
-export function activities (sequelize, DataTypes){
-    return sequelize.define('Activitie', {
+export function Activities (sequelize, DataTypes) {
+    const Activity = sequelize.define('Activitie', {
         id: {
             type: DataTypes.INTEGER,
-            primaryKey: true, 
+            primaryKey: true,
             autoIncrement: true
         },
-        name:{
+        name: {
             type: DataTypes.STRING
         },
-        description:{
+        description: {
             type: DataTypes.STRING
         },
         adress: {
@@ -38,9 +38,11 @@ export function activities (sequelize, DataTypes){
             type: DataTypes.INTEGER
         }
     }, {
-        timestamps:true,
+        timestamps: true,
         createdAt: 'created',
         uptdateAt: true
     });
+
+    return Activity
 }
 

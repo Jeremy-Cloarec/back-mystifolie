@@ -17,12 +17,12 @@ async function initDB() {
         await sequelize.authenticate();
         console.log('Connection has been established successfully.');
         // Importation du modèle dans la variable
-        const Activitie = (0, activities_1.activities)(sequelize, sequelize_1.DataTypes);
+        const Activitie = (0, activities_1.Activities)(sequelize, sequelize_1.DataTypes);
         // Synchronisez le modèle avec la base de données
         await sequelize.sync({ force: true })
             .then(_ => {
             Activitie.create();
-            console.log('La base de donnée a bien été synchronisée');
+            console.log('Success to synchronize database');
         });
     }
     catch (error) {
