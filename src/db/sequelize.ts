@@ -1,6 +1,6 @@
 
-const { Sequelize } = require('sequelize')
-const Activity = require('./models/activity')
+const { Sequelize, DataTypes } = require('sequelize')
+const ActivityModel = require('../db/models/activity')
 
 // Make a new connexion
 const sequelize = new Sequelize(
@@ -26,16 +26,24 @@ export async function ConnectionDB() {
         console.log('Unable to connect to the database');
     }
 }
-// Synchronize model with db
+
+export const Activity = ActivityModel(sequelize, DataTypes);
+
+//Synchronize model with db
 export async function SynchroniseDB() {
     try {
-        sequelize.sync({ force: true })
-        Activity.create()
-        console.log('Success to synchronize database');
+        await sequelize.sync()
+        console.log('Yeah ! Success to synchronize database');
+
     } catch (error) {
-        console.log('Unable to synchronize to the database');
+        console.log('Oups ! Unable to synchronize to the database', error);
     }
 }
+
+
+
+
+
 
 
 

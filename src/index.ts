@@ -19,8 +19,7 @@ import helmet from 'helmet'
 import validateEnv from '@utils/validateEnv'
 
 //Importing DB
-import {ConnectionDB} from './db/sequelize'
-import { SynchroniseDB } from './db/sequelize'
+import {ConnectionDB, SynchroniseDB} from './db/sequelize'
 
 //App Variables 
 dotenv.config()

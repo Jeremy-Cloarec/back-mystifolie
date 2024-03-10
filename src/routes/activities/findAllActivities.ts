@@ -1,16 +1,15 @@
-const Activity = require('../../db/sequelize')
+import {Activity} from '../../db/sequelize'
 
 export default function findAllActivitie(app) {
     app.get('/mystifolie/activites', async (req, res) => {
         try {
-            console.log(Activity);
             const activities = await Activity.findAll();
-            console.log(activities.every(activity => activity instanceof Activity)); // true
-            console.log("All activities:", JSON.stringify(activities, null, 2));
-            res.json(activities); // Envoyez les activités en tant que réponse JSON
+            console.log(activities); // Log the retrieved activities
+            res.json(activities)
+
         } catch (error) {
-            console.error("Error fetching activities:", error);
-            res.status(500).json({ error: "An error occurred while fetching activities" });
+            console.log('Oups ! Unable to retrieve activities from the database', error);
+            res.status(500).send('Internal Server Error');
         }
     });
 }
