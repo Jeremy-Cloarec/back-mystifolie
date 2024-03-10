@@ -1,6 +1,6 @@
 
 export default function deleteActivitie(app) {
-    app.delete('mystifolie/activities/:id', (req, res) => {
+    app.delete('/mystifolie/activites/:id', (req, res) => {
         res.send('Delete an activitie');
     });
 }
