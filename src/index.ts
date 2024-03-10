@@ -18,8 +18,9 @@ import helmet from 'helmet'
 //Importing .env validation
 import validateEnv from '@utils/validateEnv'
 
-//Importing initDB for connexion
-import {initDB} from './db/sequelize'
+//Importing DB
+import {ConnectionDB} from './db/sequelize'
+import { SynchroniseDB } from './db/sequelize'
 
 //App Variables 
 dotenv.config()
@@ -30,7 +31,9 @@ validateEnv();
 const app = express(); 
 
 //initializing db
-initDB()
+ConnectionDB()
+// Synchronize db
+SynchroniseDB()
 
 //using the dependancies
 app.use(helmet()); 
