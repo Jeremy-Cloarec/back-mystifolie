@@ -5,7 +5,12 @@ export default function findActivitie(app) {
 
         try {
             const activity = await Activity.findByPk(req.params.id)
-            const message = 'An activity has been found !'
+
+            if (!activity) {
+                return res.status(404).json({ message: 'Activity not found' });
+            }
+
+            const message = `The activity whith ID ${activity.id} has been found!`
             res.json({ message, data: activity })
 
         } catch (error) {

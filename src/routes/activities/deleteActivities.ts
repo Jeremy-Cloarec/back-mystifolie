@@ -16,7 +16,6 @@ export default function deleteActivitie(app) {
         } catch (error) {
             console.log('Failed to delete activity from the database', error);
             res.status(500).send('Internal Server Error');
-
         }
     });
 }
