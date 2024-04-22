@@ -1,6 +1,8 @@
 
 const { Sequelize, DataTypes } = require('sequelize')
-const ActivityModel = require('../db/models/activity')
+// const ActivityModel = require('../models/activity');
+
+import { ActivityModel } from '../models/activity';
 
 // Make a new connexion
 const sequelize = new Sequelize(

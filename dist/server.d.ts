@@ -1,2 +1,2 @@
 declare const app: any;
-declare const PORT: string | number;
+declare const port: string | number;

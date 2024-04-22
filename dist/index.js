@@ -15,12 +15,12 @@ const express_1 = tslib_1.__importDefault(require("express"));
 const cors_1 = tslib_1.__importDefault(require("cors"));
 const helmet_1 = tslib_1.__importDefault(require("helmet"));
 //Importing .env validation
-const validateEnv_1 = tslib_1.__importDefault(require("./utils/validateEnv"));
+//import validateEnv from '@utils/validateEnv'
 //Importing DB
 const sequelize_1 = require("./db/sequelize");
 //App Variables 
 dotenv.config();
-(0, validateEnv_1.default)();
+//validateEnv();
 //intializing the express app 
 const app = (0, express_1.default)();
 //initializing db

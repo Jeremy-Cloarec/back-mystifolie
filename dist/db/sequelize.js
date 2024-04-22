@@ -2,7 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SynchroniseDB = exports.Activity = exports.ConnectionDB = void 0;
 const { Sequelize, DataTypes } = require('sequelize');
-const ActivityModel = require('../db/models/activity');
+// const ActivityModel = require('../models/activity');
+const activity_1 = require("../models/activity");
 // Make a new connexion
 const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
     host: 'localhost',
@@ -23,7 +24,7 @@ async function ConnectionDB() {
     }
 }
 exports.ConnectionDB = ConnectionDB;
-exports.Activity = ActivityModel(sequelize, DataTypes);
+exports.Activity = (0, activity_1.ActivityModel)(sequelize, DataTypes);
 //Synchronize model with db
 async function SynchroniseDB() {
     try {

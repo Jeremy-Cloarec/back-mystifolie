@@ -1,6 +1,8 @@
-import { activitiesEnums } from './activities-enums'
-
-module.exports = (sequelize, DataTypes) => {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ActivityModel = void 0;
+const activities_enums_1 = require("./activities-enums");
+const ActivityModel = (sequelize, DataTypes) => {
     return sequelize.define('Activitie', {
         id: {
             type: DataTypes.INTEGER,
@@ -28,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
             defaultValue: 'Lyon'
         },
         type: {
-            type: DataTypes.ENUM(...Object.values(activitiesEnums)),
+            type: DataTypes.ENUM(...Object.values(activities_enums_1.activitiesEnums)),
             defaultValue: 'Aventure'
         },
         budgetMin: {
@@ -50,7 +52,6 @@ module.exports = (sequelize, DataTypes) => {
         createdAt: 'created',
         uptdateAt: true
     });
-
-}
-
-
+};
+exports.ActivityModel = ActivityModel;
+//# sourceMappingURL=activity.js.map
