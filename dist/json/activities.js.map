@@ -1,1 +1,0 @@
-{"version":3,"file":"activities.js","sourceRoot":"","sources":["../../src/json/activities.ts"],"names":[],"mappings":";;;AAAa,QAAA,IAAI,GAAG;IAClB;QACE,SAAS,EAAE,0BAA0B;QACrC,SAAS,EAAE,WAAW;QACtB,KAAK,EAAE,EAAE;QACT,MAAM,EAAE,eAAe;KACxB;IACD;QACE,SAAS,EAAE,0BAA0B;QACrC,SAAS,EAAE,WAAW;QACtB,KAAK,EAAE,EAAE;QACT,MAAM,EAAE,iBAAiB;KAC1B;CACF,CAAC"}

@@ -1,33 +1,38 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.initDB = void 0;
-const sequelize_1 = require("sequelize");
-const activities_1 = require("./models/activities");
-async function initDB() {
+exports.SynchroniseDB = exports.Activity = exports.ConnectionDB = void 0;
+const { Sequelize, DataTypes } = require('sequelize');
+const ActivityModel = require('../db/models/activity');
+// Make a new connexion
+const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
+    host: 'localhost',
+    dialect: 'mysql',
+    dialectOptions: {
+        timezone: '+00:00'
+    },
+    logging: false
+});
+// Checking connexion with db
+async function ConnectionDB() {
     try {
-        const sequelize = new sequelize_1.Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
-            host: 'localhost',
-            dialect: 'mysql',
-            dialectOptions: {
-                timezone: '+00:00'
-            },
-            logging: false
-        });
-        // Vérifier la connexion à la bdd
         await sequelize.authenticate();
         console.log('Connection has been established successfully.');
-        // Importation du modèle dans la variable
-        const Activitie = (0, activities_1.Activities)(sequelize, sequelize_1.DataTypes);
-        // Synchronisez le modèle avec la base de données
-        await sequelize.sync({ force: true })
-            .then(_ => {
-            Activitie.create();
-            console.log('Success to synchronize database');
-        });
     }
     catch (error) {
-        console.error('Unable to connect to the database:', error);
+        console.log('Unable to connect to the database');
     }
 }
-exports.initDB = initDB;
+exports.ConnectionDB = ConnectionDB;
+exports.Activity = ActivityModel(sequelize, DataTypes);
+//Synchronize model with db
+async function SynchroniseDB() {
+    try {
+        await sequelize.sync();
+        console.log('Yeah ! Success to synchronize database');
+    }
+    catch (error) {
+        console.log('Oups ! Unable to synchronize to the database', error);
+    }
+}
+exports.SynchroniseDB = SynchroniseDB;
 //# sourceMappingURL=sequelize.js.map

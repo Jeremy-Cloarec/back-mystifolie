@@ -1,1 +1,1 @@
-declare const Activities: any;
+export default function findAllActivitie(app: any): void;
