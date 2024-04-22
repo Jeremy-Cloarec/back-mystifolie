@@ -2,10 +2,9 @@
 require("dotenv").config();
 const app = require(".")
 
-const PORT = process.env.PORT || 3000
+const port = process.env.PORT || 3000
 
 //Listing to the app and running it on PORT 5000
-app.listen(PORT, async () => {
-   console.log(`Server running at http://localhost:${PORT}. Go to http://localhost:${PORT}/mystifolie`)
-
+app.listen(port, async () => {
+   console.log(`Server running at http://localhost:${port}. Go to http://localhost:${port}/mystifolie`)
 })

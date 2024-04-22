@@ -16,7 +16,7 @@ import cors from 'cors'
 import helmet from 'helmet'
 
 //Importing .env validation
-import validateEnv from '@utils/validateEnv'
+//import validateEnv from '@utils/validateEnv'
 
 //Importing DB
 import {ConnectionDB, SynchroniseDB} from './db/sequelize'
@@ -24,7 +24,7 @@ import {ConnectionDB, SynchroniseDB} from './db/sequelize'
 //App Variables 
 dotenv.config()
 
-validateEnv();
+//validateEnv();
 
 //intializing the express app 
 const app = express(); 
