@@ -12,6 +12,7 @@ import getProject from './routes/getProject'
 //Importing project dependancies
 import * as dotenv from 'dotenv'
 import express from 'express'
+import favicon from 'serve-favicon'
 import cors from 'cors' 
 import helmet from 'helmet'
 
@@ -20,6 +21,7 @@ import helmet from 'helmet'
 
 //Importing DB
 import {ConnectionDB, SynchroniseDB} from './db/sequelize'
+import path from 'path'
 
 //App Variables 
 dotenv.config()
@@ -38,6 +40,7 @@ SynchroniseDB()
 app.use(helmet()); 
 app.use(cors()); 
 app.use(express.json())
+app.use(favicon(path.join(__dirname, 'favicon.ico')))
 
 // Routes 
 // project
