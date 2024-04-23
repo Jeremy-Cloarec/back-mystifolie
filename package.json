@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "dev": "NODE_ENV=development nodemon",
-    "start": "cross-env NODE_ENV=production node dist/server.js",
+    "start": "NODE_ENV=production node dist/server.js",
     "build": "tsc && tsc-alias"
   },
   "repository": {
