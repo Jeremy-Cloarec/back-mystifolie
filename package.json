@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "dev": "NODE_ENV=development nodemon",
-    "start": "npm run build && cross-env NODE_ENV=production node dist/server.js",
+    "start": "cross-env NODE_ENV=production node dist/server.js",
     "build": "tsc && tsc-alias"
   },
   "repository": {
@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/Jeremy-Cloarec/back-mystifolie#readme",
   "dependencies": {
-    "typescript": "^5.4.2",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
