@@ -1,3 +1,5 @@
+import { config } from 'dotenv';
+config();
 
 const { Sequelize, DataTypes } = require('sequelize')
 import { dataActivitie } from '../json/dataActivitie'
