@@ -4,16 +4,13 @@ import { dataActivitie } from '../json/dataActivitie'
 import { ActivityModel } from '../models/activity';
 
 
-let sequelize: any;
+let sequelize;
 
 if (process.env.NODE_ENV === 'production') {
     // Make a new connexion
-    sequelize = new Sequelize(
-        process.env.DB_NAME,
-        process.env.DB_USER,
-        process.env.DB_PASSWORD,
+    sequelize = new Sequelize('rznou9wwmzlmfy83', 'liun3e423h6agphh', 'nlhbmnpydbe2h4rz',
         {
-            host: process.env.DB_HOST,
+            host: 'erxv1bzckceve5lh.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
             dialect: 'mysql',
             dialectOptions: {
                 timezone: '+02:00'
