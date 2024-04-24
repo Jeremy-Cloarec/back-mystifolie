@@ -1,17 +1,24 @@
+import { config } from 'dotenv';
+config();
 
 const { Sequelize, DataTypes } = require('sequelize')
 import { dataActivitie } from '../json/dataActivitie'
 import { ActivityModel } from '../models/activity';
 
+const { DB_NAME, DB_USER, DB_PASSWORD, DB_HOST, DB_DIALECT, DB_PORT } = process.env;
 
 let sequelize;
 
 if (process.env.NODE_ENV === 'production') {
     // Make a new connexion
-    sequelize = new Sequelize('rznou9wwmzlmfy83', 'liun3e423h6agphh', 'nlhbmnpydbe2h4rz',
+    sequelize = new Sequelize(
+        DB_NAME,
+        DB_USER,
+        DB_PASSWORD,
         {
-            host: 'erxv1bzckceve5lh.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
-            dialect: 'mysql',
+            host: DB_HOST,
+            dialect: DB_DIALECT,
+            port: DB_PORT,
             dialectOptions: {
                 timezone: '+02:00'
             },
