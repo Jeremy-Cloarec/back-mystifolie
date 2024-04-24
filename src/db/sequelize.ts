@@ -2,7 +2,6 @@ const { Sequelize, DataTypes } = require('sequelize')
 import { dataActivitie } from '../json/dataActivitie'
 import { ActivityModel } from '../models/activity'
 import dotenv from 'dotenv'
-
 dotenv.config();
 
 
@@ -10,10 +9,13 @@ let sequelize;
 
 if (process.env.NODE_ENV === 'production') {
     // Make a new connexion
-    sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD,
+    sequelize = new Sequelize(
+        process.env.DB_NAME,
+        process.env.DB_USER,
+        process.env.DB_PASSWORD,
         {
             host: process.env.DB_HOST,
-            dialect: 'mysql',
+            dialect: "mysql",
             dialectOptions: {
                 timezone: '+02:00'
             },
