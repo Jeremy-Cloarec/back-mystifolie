@@ -1,9 +1,9 @@
-import { config } from 'dotenv';
-config();
-
 const { Sequelize, DataTypes } = require('sequelize')
 import { dataActivitie } from '../json/dataActivitie'
-import { ActivityModel } from '../models/activity';
+import { ActivityModel } from '../models/activity'
+import dotenv from 'dotenv'
+
+dotenv.config();
 
 
 let sequelize;
@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === 'production') {
             },
             logging: true
         }
-    )
+    );
 } else {
     // Make a new connexion
     sequelize = new Sequelize(
