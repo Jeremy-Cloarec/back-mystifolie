@@ -1,7 +1,6 @@
 
 const { Sequelize, DataTypes } = require('sequelize')
-// const ActivityModel = require('../models/activity');
-
+import {dataActivitie} from '../json/dataActivitie'
 import { ActivityModel } from '../models/activity';
 
 // Make a new connexion
@@ -13,11 +12,13 @@ const sequelize = new Sequelize(
         host: 'localhost',
         dialect: 'mysql',
         dialectOptions: {
-            timezone: '+00:00'
+            timezone: '+02:00'
         },
         logging: false
     }
 )
+
+const activitieData = dataActivitie
 
 // Checking connexion with db
 export async function ConnectionDB() {
@@ -34,7 +35,9 @@ export const Activity = ActivityModel(sequelize, DataTypes);
 //Synchronize model with db
 export async function SynchroniseDB() {
     try {
-        await sequelize.sync()
+        await sequelize.sync({force:true})
+        await Activity.bulkCreate(activitieData);
+
         console.log('Yeah ! Success to synchronize database');
 
     } catch (error) {
