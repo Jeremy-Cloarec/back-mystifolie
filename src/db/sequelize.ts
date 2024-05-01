@@ -26,15 +26,15 @@ if (process.env.NODE_ENV === 'production') {
     // Make a new connexion
     sequelize = new Sequelize(
         "mystifolie",
-        "root",
-        "",
+        "jeremy",
+        "Hermitage93*",
         {
             host: 'localhost',
             dialect: 'mysql',
             dialectOptions: {
-                timezone: '+02:00'
+                timezone: 'Europe/Paris'
             },
-            logging: false
+            logging: true
         }
     )
 }
