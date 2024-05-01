@@ -1,52 +1,32 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ActivityModel = void 0;
-const activities_enums_1 = require("./activities-enums");
 const ActivityModel = (sequelize, DataTypes) => {
     return sequelize.define('Activitie', {
-        id: {
+        id_activite: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        name: {
+        nom: {
             type: DataTypes.STRING,
             defaultValue: 'SENSAS'
+        },
+        min_personne: {
+            type: DataTypes.INTEGER,
+            defaultValue: 2
+        },
+        max_personne: {
+            type: DataTypes.INTEGER,
+        },
+        prix_par_personne: {
+            type: DataTypes.INTEGER,
+            defaultValue: 30
         },
         description: {
             type: DataTypes.TEXT,
             defaultValue: 'SENSAS est un concept de divertissement français unique en son genre. Le but est de franchir la ligne d arrivée d un parcours sensoriel de 6 ateliers ! Vous redécouvrirez vos 5 sens à travers différents challenges délirants à vivre entre amis ou en famille.'
         },
-        adress: {
-            type: DataTypes.STRING,
-            defaultValue: '14 rue Michel Felizat'
-        },
-        cp: {
-            type: DataTypes.INTEGER,
-            defaultValue: 69007
-        },
-        city: {
-            type: DataTypes.STRING,
-            defaultValue: 'Lyon'
-        },
-        type: {
-            type: DataTypes.ENUM(...Object.values(activities_enums_1.activitiesEnums)),
-            defaultValue: 'Aventure'
-        },
-        budgetMin: {
-            type: DataTypes.INTEGER,
-            defaultValue: 30
-        },
-        budgetMax: {
-            type: DataTypes.INTEGER,
-        },
-        nombreMin: {
-            type: DataTypes.INTEGER,
-            defaultValue: 2
-        },
-        nombreMax: {
-            type: DataTypes.INTEGER,
-        }
     }, {
         timestamps: true,
         createdAt: 'created',

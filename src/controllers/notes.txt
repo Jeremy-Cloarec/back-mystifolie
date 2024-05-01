@@ -1,0 +1,2 @@
+controllers : where you pu what you want to do with the data
+Treat the data threw the controllers
