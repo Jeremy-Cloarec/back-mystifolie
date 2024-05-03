@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === 'production') {
             host: 'erxv1bzckceve5lh.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
             dialect: 'mysql',
             dialectOptions: {
-                timezone: '+02:00'
+                timezone: '+00:00'
             },
             logging: false
         }
@@ -32,9 +32,10 @@ if (process.env.NODE_ENV === 'production') {
             host: 'localhost',
             dialect: 'mysql',
             dialectOptions: {
-                timezone: 'Europe/Paris'
+                useUTC: false
             },
-            logging: true
+            logging: true,
+            timezone: '+04:00'
         }
     )
 }
