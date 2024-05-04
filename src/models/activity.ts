@@ -1,35 +1,27 @@
-export const ActivityModel = (sequelize, DataTypes) => {
-    return sequelize.define('Activitie', {
-        id_activite: {
-            type: DataTypes.INTEGER,
-            primaryKey: true,
-            autoIncrement: true
-        },
-        nom: {
-            type: DataTypes.STRING,
-            defaultValue: 'SENSAS'
-        },
-        min_personne: {
-            type: DataTypes.INTEGER,
-            defaultValue: 2
-        },
-        max_personne: {
-            type: DataTypes.INTEGER,
-        },
-        prix_par_personne: {
-            type: DataTypes.INTEGER,
-            defaultValue: 30
-        },
-        description: {
-            type: DataTypes.TEXT,
-            defaultValue: 'SENSAS est un concept de divertissement français unique en son genre. Le but est de franchir la ligne d arrivée d un parcours sensoriel de 6 ateliers ! Vous redécouvrirez vos 5 sens à travers différents challenges délirants à vivre entre amis ou en famille.'
-        },
-    }, {
-        timestamps: true,
-        createdAt: 'created',
-        uptdateAt: true
-    });
+import { Column, DataType, AutoIncrement, Model, PrimaryKey, Table } from 'sequelize-typescript';
 
+@Table({ tableName: 'Activity' })
+export class Activity extends Model<Activity> {
+
+    @PrimaryKey
+    @AutoIncrement
+    @Column(DataType.INTEGER)
+    id_activite!: number;
+
+    @Column(DataType.STRING)
+    nom!: string;
+
+    @Column(DataType.INTEGER)
+    min_personne!: number;
+
+    @Column(DataType.INTEGER)
+    max_personne!: number;
+
+    @Column(DataType.INTEGER)
+    prix_par_personne!: number;
+
+    @Column(DataType.TEXT)
+    description!: string;
 }
 
 

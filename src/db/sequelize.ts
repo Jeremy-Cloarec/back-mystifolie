@@ -1,14 +1,13 @@
-const { Sequelize, DataTypes } = require('sequelize')
+import { Sequelize } from 'sequelize-typescript'
 import { dataActivitie } from '../json/dataActivitie'
-import { ActivityModel } from '../models/activity'
+import { Activity } from '../models/activity'
 import dotenv from 'dotenv'
+
 dotenv.config();
 
-
-let sequelize;
+let sequelize: Sequelize
 
 if (process.env.NODE_ENV === 'production') {
-    // Make a new connexion
     sequelize = new Sequelize(
         "rznou9wwmzlmfy83",
         "liun3e423h6agphh",
@@ -17,30 +16,27 @@ if (process.env.NODE_ENV === 'production') {
             host: 'erxv1bzckceve5lh.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
             dialect: 'mysql',
             dialectOptions: {
-                timezone: '+00:00'
+                timezone: '+02:00'
             },
             logging: false
         }
     );
 } else {
-    // Make a new connexion
     sequelize = new Sequelize(
-        "mystifolie",
-        "jeremy",
-        "Hermitage93*",
+        process.env.DB_NAME,
+        process.env.DB_USER,
+        process.env.DB_PASSWORD,
         {
-            host: 'localhost',
+            host: process.env.DB_HOST,
             dialect: 'mysql',
             dialectOptions: {
                 useUTC: false
             },
             logging: true,
-            timezone: '+04:00'
+            timezone: '+02:00'
         }
     )
 }
-
-
 
 const activitieData = dataActivitie
 
@@ -54,7 +50,7 @@ export async function ConnectionDB() {
     }
 }
 
-export const Activity = ActivityModel(sequelize, DataTypes);
+sequelize.addModels([Activity]);
 
 //Synchronize model with db
 export async function SynchroniseDB() {
@@ -68,6 +64,8 @@ export async function SynchroniseDB() {
         console.log('Oups ! Unable to synchronize to the database', error);
     }
 }
+
+export { Activity }
 
 
 

@@ -1,7 +1,8 @@
+import { Request, Response } from 'express'
 import { Activity } from '../db/sequelize';
 
 export const ActivityController = {
-    getAll: async (req, res) => {
+    getAll: async (req: Request, res: Response) => {
         try {
             const activities = await Activity.findAll();
             console.log(activities); // Log the retrieved activities
@@ -11,7 +12,7 @@ export const ActivityController = {
             res.status(500).send('Internal Server Error');
         }
     },
-    get: async (req, res) => {
+    get: async (req: Request, res: Response) => {
         try {
             const activity = await Activity.findByPk(req.params.id)
 
@@ -27,7 +28,7 @@ export const ActivityController = {
             res.status(500).send('Internal Server Error');
         }
     },
-    post: async (req, res) => {
+    post: async (req: Request, res: Response) => {
         try {
             const activity = await Activity.create(req.body)
             const message = `L'activité' ${req.body.nom} a bien été créé`
@@ -40,7 +41,7 @@ export const ActivityController = {
             res.status(500).send('Internal Server Error');
         }
     },
-    put: async (req, res) => {
+    put: async (req: Request, res: Response) => {
         try {
             const activity = await Activity.findByPk(req.params.id)
             if (!activity) {
@@ -58,7 +59,7 @@ export const ActivityController = {
             res.status(500).send('Internal Server Error');
         }
     },
-    delete: async (req, res) => {
+    delete: async (req: Request, res: Response) => {
         try {
             const activity = await Activity.findByPk(req.params.id)
             if (!activity) {

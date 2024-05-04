@@ -11,23 +11,21 @@ import helmet from 'helmet'
 //Importing routes
 import activityRoute from './routes/Activity'
 
-//Importing .env validation
-//import validateEnv from '@utils/validateEnv'
-
 //Importing DB
 import { ConnectionDB, SynchroniseDB } from './db/sequelize'
+
+//Path for the favicon
 import path from 'path'
 
 //App Variables 
 dotenv.config()
 
-//validateEnv();
+//Intializing the express app 
+const app= express();
 
-//intializing the express app 
-const app = express();
-
-//initializing db
+//Initializing db
 ConnectionDB()
+
 // Synchronize db
 SynchroniseDB()
 
@@ -40,10 +38,8 @@ app.use(favicon(path.join(__dirname, 'favicon.ico')))
 // Routes 
 app.use('/activity/', activityRoute)
 
-
 // project
 getProject(app)
-
 
 //exporting app
 module.exports = app
