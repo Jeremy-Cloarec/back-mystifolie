@@ -1,5 +1,5 @@
 // Importing projet route
-import getProject from './routes/getProject'
+import getProject from './routers/getProject'
 
 //Importing project dependancies
 import * as dotenv from 'dotenv'
@@ -9,10 +9,10 @@ import cors from 'cors'
 import helmet from 'helmet'
 
 //Importing routes
-import activityRoute from './routes/Activity'
+import activityRoute from './routers/Activity'
 
 //Importing DB
-import { ConnectionDB, SynchroniseDB } from './db/sequelize'
+import { ConnectionDB, SynchroniseDB } from './databases/sequelize'
 
 //Path for the favicon
 import path from 'path'
@@ -21,7 +21,7 @@ import path from 'path'
 dotenv.config()
 
 //Intializing the express app 
-const app= express();
+const app = express();
 
 //Initializing db
 ConnectionDB()

@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize-typescript'
-import { dataActivitie } from '../json/dataActivitie'
+import { dataActivitie } from '../data/dataActivitie'
 import { Activity } from '../models/activity'
 import dotenv from 'dotenv'
 
