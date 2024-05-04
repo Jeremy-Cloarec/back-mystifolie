@@ -1,5 +1,7 @@
 import { Request, Response } from 'express'
 import { ActivityService } from '../services/ActivityService'
+import { CreateActivityDTO } from '../dtos/activity/CreateActivityDTO'
+import { UpdateActivityDTO } from '../dtos/activity/UpdateActivityDTO'
 
 export const ActivityController = {
     getAll: async (req: Request, res: Response) => {
@@ -19,6 +21,7 @@ export const ActivityController = {
 
             const message = `The activity with ID ${activity.id_activite} has been found!`;
             res.status(200).json({ message, data: activity });
+
         } catch (error) {
             console.log('Oups ! Unable to retrieve activity from the service', error);
             res.status(404).json({ message: 'Activity not found' });
@@ -26,9 +29,9 @@ export const ActivityController = {
     },
     post: async (req: Request, res: Response) => {
         try {
-            const activity = await ActivityService.createActivity(req.body);
-            const message = `L'activité' ${req.body.nom} a bien été créé`
-            console.log(req.body);
+            const createActivityDTO: CreateActivityDTO = req.body;
+            const activity = await ActivityService.createActivity(createActivityDTO);
+            const message = `L'activité' ${createActivityDTO.nom} a bien été créé`
 
             res.json({ message, data: activity })
 
@@ -39,11 +42,8 @@ export const ActivityController = {
     },
     put: async (req: Request, res: Response) => {
         try {
-            const activity = await ActivityService.updateActivity(Number(req.params.id), req.body)
-
-            if (!activity) {
-                return res.status(404).json({ message: 'Activity not found' });
-            }
+            const updateActivityDTO: UpdateActivityDTO = req.body;
+            const activity = await ActivityService.updateActivity(Number(req.params.id), updateActivityDTO)
 
             const message = `The activity whith ID ${activity.id} has been updated !`
             res.json({ message, data: activity })
@@ -55,17 +55,13 @@ export const ActivityController = {
     },
     delete: async (req: Request, res: Response) => {
         try {
-            const activity = await ActivityService.deleteActivity(Number(req.params.id))
-            if (!activity) {
-                return res.status(404).json({ message: 'Activity not found' });
-            }
-
+            await ActivityService.deleteActivity(Number(req.params.id))
             const message = `The activity has been destroyed`
             res.json({ message })
 
         } catch (error) {
             console.log(error);
-            res.status(500).send('Internal Server Error');
+            res.status(404).json({ message: 'Activity not found' });
         }
     }
 }

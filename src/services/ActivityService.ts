@@ -1,4 +1,6 @@
 import { Activity } from '../databases/sequelize'
+import { CreateActivityDTO } from '../dtos/activity/CreateActivityDTO';
+import { UpdateActivityDTO } from '../dtos/activity/UpdateActivityDTO';
 
 export class ActivityService {
     static async getAllActivities() {
@@ -23,7 +25,7 @@ export class ActivityService {
         }
     }
 
-    static async createActivity(activityData: any) {
+    static async createActivity(activityData: CreateActivityDTO) {
         try {
             return await Activity.create(activityData);
         } catch (error) {
@@ -31,7 +33,7 @@ export class ActivityService {
         }
     }
 
-    static async updateActivity(id: number, updatedData: any) {
+    static async updateActivity(id: number, updatedData: UpdateActivityDTO) {
         try {
             const activity = await Activity.findByPk(id);
 
@@ -55,7 +57,7 @@ export class ActivityService {
             }
 
             await activity.destroy();
-            return { message: 'Activity deleted successfully' };
+
         } catch (error) {
             throw new Error('Unable to delete activity from the database');
         }
