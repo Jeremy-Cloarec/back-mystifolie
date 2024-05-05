@@ -1,6 +1,6 @@
 import { Activity } from '../databases/sequelize'
-import { CreateActivityDTO } from '../dtos/activity/CreateActivityDTO';
-import { UpdateActivityDTO } from '../dtos/activity/UpdateActivityDTO';
+import { CreateActivityDTO } from '../dtos/activityModel/CreateActivityDTO';
+import { UpdateActivityDTO } from '../dtos/activityModel/UpdateActivityDTO';
 
 export class ActivityService {
     static async getAllActivities() {
@@ -14,11 +14,11 @@ export class ActivityService {
         try {
             const activity = await Activity.findByPk(id);
 
-        if (!activity) {
-            throw new Error('Activity not found');
-        }
+            if (!activity) {
+                throw new Error('Activity not found');
+            }
 
-        return activity;
+            return activity;
 
         } catch (error) {
             throw new Error('Oups ! Unable to retrieve activity from the database');

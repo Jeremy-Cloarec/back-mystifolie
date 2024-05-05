@@ -1,4 +1,4 @@
-export const dataActivitie = [
+export const dataActivity = [
   {
     "nom": "Activité 1",
     "min_personne": 3,

@@ -1,6 +1,8 @@
 import { Sequelize } from 'sequelize-typescript'
-import { dataActivitie } from '../data/dataActivitie'
+import { dataActivity } from '../data/dataActivity'
+import {dataUser} from '../data/dataUser'
 import { Activity } from '../models/activity'
+import { User } from '../models/users'
 import dotenv from 'dotenv'
 
 dotenv.config();
@@ -38,8 +40,6 @@ if (process.env.NODE_ENV === 'production') {
     )
 }
 
-const activitieData = dataActivitie
-
 // Checking connexion with db
 export async function ConnectionDB() {
     try {
@@ -50,13 +50,14 @@ export async function ConnectionDB() {
     }
 }
 
-sequelize.addModels([Activity]);
+sequelize.addModels([Activity, User]);
 
 //Synchronize model with db
 export async function SynchroniseDB() {
     try {
         await sequelize.sync({ force: true })
-        await Activity.bulkCreate(activitieData);
+        await Activity.bulkCreate(dataActivity);
+        await User.bulkCreate(dataUser);
 
         console.log('Yeah ! Success to synchronize database');
 
@@ -65,7 +66,7 @@ export async function SynchroniseDB() {
     }
 }
 
-export { Activity }
+export { Activity, User }
 
 
 

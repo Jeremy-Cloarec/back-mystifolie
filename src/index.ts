@@ -10,6 +10,7 @@ import helmet from 'helmet'
 
 //Importing routes
 import activityRoute from './routers/Activity'
+import userRoute from './routers/User'
 
 //Importing DB
 import { ConnectionDB, SynchroniseDB } from './databases/sequelize'
@@ -37,6 +38,7 @@ app.use(favicon(path.join(__dirname, 'favicon.ico')))
 
 // Routes 
 app.use('/activity/', activityRoute)
+app.use('/user/', userRoute)
 
 // project
 getProject(app)

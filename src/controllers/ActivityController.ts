@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import { ActivityService } from '../services/ActivityService'
-import { CreateActivityDTO } from '../dtos/activity/CreateActivityDTO'
-import { UpdateActivityDTO } from '../dtos/activity/UpdateActivityDTO'
+import { CreateActivityDTO } from '../dtos/activityModel/CreateActivityDTO'
+import { UpdateActivityDTO } from '../dtos/activityModel/UpdateActivityDTO'
 
 export const ActivityController = {
     getAll: async (req: Request, res: Response) => {
