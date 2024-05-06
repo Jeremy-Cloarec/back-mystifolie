@@ -1,5 +1,5 @@
 // Importing projet route
-import getProject from './routers/getProject'
+import getProject from './routers/getProject.router'
 
 //Importing project dependancies
 import * as dotenv from 'dotenv'
@@ -9,8 +9,9 @@ import cors from 'cors'
 import helmet from 'helmet'
 
 //Importing routes
-import activityRoute from './routers/Activity'
-import userRoute from './routers/User'
+import activityRoute from './routers/activity.router'
+import userRoute from './routers/user.router'
+import userReservation from './routers/reservation.route'
 
 //Importing DB
 import { ConnectionDB, SynchroniseDB } from './databases/sequelize'
@@ -39,6 +40,7 @@ app.use(favicon(path.join(__dirname, 'favicon.ico')))
 // Routes 
 app.use('/activity/', activityRoute)
 app.use('/user/', userRoute)
+app.use('/reservation/', userReservation)
 
 // project
 getProject(app)

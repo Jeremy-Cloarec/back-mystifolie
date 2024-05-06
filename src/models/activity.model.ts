@@ -1,12 +1,16 @@
-import { Column, DataType, AutoIncrement, Model, PrimaryKey, Table } from 'sequelize-typescript';
+import { Column, DataType, AutoIncrement, Model, PrimaryKey, Table, HasMany } from 'sequelize-typescript';
+import { AssocClientActivity } from './assoc_client_activity.model';
 
 @Table({ tableName: 'Activity' })
 export class Activity extends Model<Activity> {
 
+    @HasMany(() => AssocClientActivity)
+    assocClientActivities: AssocClientActivity[];
+
     @PrimaryKey
     @AutoIncrement
     @Column(DataType.INTEGER)
-    id_activite!: number;
+    id_activity!: number;
 
     @Column(DataType.STRING)
     nom!: string;

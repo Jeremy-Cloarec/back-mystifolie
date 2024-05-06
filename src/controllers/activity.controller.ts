@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
-import { ActivityService } from '../services/ActivityService'
-import { CreateActivityDTO } from '../dtos/activityModel/CreateActivityDTO'
-import { UpdateActivityDTO } from '../dtos/activityModel/UpdateActivityDTO'
+import { ActivityService } from '../services/activity.service'
+import { CreateActivityDTO } from '../dtos/activity.dto/createActivity.dto'
+import { UpdateActivityDTO } from '../dtos/activity.dto/updateActivity.dto'
 
 export const ActivityController = {
     getAll: async (req: Request, res: Response) => {
@@ -19,7 +19,7 @@ export const ActivityController = {
             const activityId = Number(req.params.id);
             const activity = await ActivityService.getActivityById(activityId);
 
-            const message = `The activity with ID ${activity.id_activite} has been found!`;
+            const message = `The activity with ID ${activity.id_activity} has been found!`;
             res.status(200).json({ message, data: activity });
 
         } catch (error) {

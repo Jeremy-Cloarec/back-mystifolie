@@ -1,6 +1,6 @@
 import { Activity } from '../databases/sequelize'
-import { CreateActivityDTO } from '../dtos/activityModel/CreateActivityDTO';
-import { UpdateActivityDTO } from '../dtos/activityModel/UpdateActivityDTO';
+import { CreateActivityDTO } from '../dtos/activity.dto/createActivity.dto';
+import { UpdateActivityDTO } from '../dtos/activity.dto/updateActivity.dto';
 
 export class ActivityService {
     static async getAllActivities() {

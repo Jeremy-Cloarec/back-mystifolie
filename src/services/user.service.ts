@@ -1,6 +1,6 @@
 import { User } from '../databases/sequelize'
-import { CreateUserDTO } from '../dtos/userModel/CreateUserDTO';
-import { UpdateUserDTO } from '../dtos/userModel/UpdateUserDTO';
+import { CreateUserDTO } from '../dtos/user.dto/createUser.dto';
+import { UpdateUserDTO } from '../dtos/user.dto/updateUser.dto';
 
 export class UserService {
     static async getAllUsers() {
@@ -48,7 +48,8 @@ export class UserService {
     }
 
     static async deleteUser(id: number) {
-        try {User
+        try {
+            User
             const user = await User.findByPk(id);
 
             if (!user) {

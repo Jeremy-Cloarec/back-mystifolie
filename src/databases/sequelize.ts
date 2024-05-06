@@ -1,8 +1,9 @@
 import { Sequelize } from 'sequelize-typescript'
 import { dataActivity } from '../data/dataActivity'
-import {dataUser} from '../data/dataUser'
-import { Activity } from '../models/activity'
-import { User } from '../models/users'
+import { dataUser } from '../data/dataUser'
+import { Activity } from '../models/activity.model'
+import { User } from '../models/user.model'
+import { AssocClientActivity } from '../models/assoc_client_activity.model'
 import dotenv from 'dotenv'
 
 dotenv.config();
@@ -50,12 +51,16 @@ export async function ConnectionDB() {
     }
 }
 
-sequelize.addModels([Activity, User]);
+sequelize.addModels([
+    Activity,
+    User,
+    AssocClientActivity
+]);
 
 //Synchronize model with db
 export async function SynchroniseDB() {
     try {
-        await sequelize.sync({ force: true })
+        await sequelize.sync()
         await Activity.bulkCreate(dataActivity);
         await User.bulkCreate(dataUser);
 
@@ -66,7 +71,7 @@ export async function SynchroniseDB() {
     }
 }
 
-export { Activity, User }
+export { Activity, User, AssocClientActivity };
 
 
 

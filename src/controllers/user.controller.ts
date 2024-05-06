@@ -1,9 +1,10 @@
 import { Request, Response } from 'express'
-import { UserService } from '../services/UserService'
-import { CreateUserDTO } from '../dtos/userModel/CreateUserDTO'
-import { UpdateUserDTO } from '../dtos/userModel/UpdateUserDTO'
+import { UserService } from '../services/user.service'
+import { CreateUserDTO } from '../dtos/user.dto/createUser.dto'
+import { UpdateUserDTO } from '../dtos/user.dto/updateUser.dto'
 
 export const UserController = {
+
     getAll: async (req: Request, res: Response) => {
         try {
             const user = await UserService.getAllUsers();
