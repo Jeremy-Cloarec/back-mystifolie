@@ -24,6 +24,20 @@ if (process.env.NODE_ENV === 'production') {
             logging: false
         }
     );
+// if (process.env.NODE_ENV === 'production') {
+//     sequelize = new Sequelize(
+//         "rznou9wwmzlmfy83",
+//         "liun3e423h6agphh",
+//         "nlhbmnpydbe2h4rz",
+//         {
+//             host: 'erxv1bzckceve5lh.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+//             dialect: 'mysql',
+//             dialectOptions: {
+//                 timezone: '+02:00'
+//             },
+//             logging: false
+//         }
+//     );
 } else {
     sequelize = new Sequelize(
         process.env.DB_NAME,
@@ -60,7 +74,7 @@ sequelize.addModels([
 //Synchronize model with db
 export async function SynchroniseDB() {
     try {
-        await sequelize.sync()
+        await sequelize.sync( {force: true} )
         await Activity.bulkCreate(dataActivity);
         await User.bulkCreate(dataUser);
 
