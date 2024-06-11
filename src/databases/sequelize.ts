@@ -12,11 +12,11 @@ let sequelize: Sequelize
 
 if (process.env.NODE_ENV === 'production') {
     sequelize = new Sequelize(
-        "rznou9wwmzlmfy83",
-        "liun3e423h6agphh",
-        "nlhbmnpydbe2h4rz",
+        process.env.DB_NAME,
+        process.env.DB_USER,
+        process.env.DB_PASSWORD,
         {
-            host: 'erxv1bzckceve5lh.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+            host: process.env.DB_HOST,
             dialect: 'mysql',
             dialectOptions: {
                 timezone: '+02:00'
