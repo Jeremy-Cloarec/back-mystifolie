@@ -11,7 +11,8 @@ import helmet from 'helmet'
 //Importing routes
 import activityRoute from './routers/activity.router'
 import userRoute from './routers/user.router'
-import userReservation from './routers/reservation.route'
+import reservation from './routers/reservation.route'
+import auth from './routers/auth.router'
 
 //Importing DB
 import { ConnectionDB, SynchroniseDB } from './databases/sequelize'
@@ -40,7 +41,8 @@ app.use(favicon(path.join(__dirname, 'favicon.ico')))
 // Routes 
 app.use('/activity/', activityRoute)
 app.use('/user/', userRoute)
-app.use('/reservation/', userReservation)
+app.use('/reservation/', reservation)
+app.use('/auth/', auth)
 
 // project
 getProject(app)

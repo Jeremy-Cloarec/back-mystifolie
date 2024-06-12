@@ -1,4 +1,4 @@
-import { Column, DataType, Model, Table, AutoIncrement, PrimaryKey, HasMany } from 'sequelize-typescript';
+import { Column, DataType, Model, Table, AutoIncrement, PrimaryKey, HasMany, Unique } from 'sequelize-typescript';
 import { AssocClientActivity } from './assoc_client_activity.model';
 
 @Table({ tableName: 'User' })
@@ -18,6 +18,8 @@ export class User extends Model<User> {
     @Column(DataType.STRING)
     mdp!: string;
 
+    @Unique
     @Column(DataType.STRING)
     mail!: string;
+    
 }
