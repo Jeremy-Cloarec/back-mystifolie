@@ -10,6 +10,7 @@ class AuthController {
             return res.status(201).json(user);
 
         } catch (error) {
+            console.error('Error in register controller:', error); 
             if (error.message === 'Email already in use') {
                 return res.status(400).json({ message: error.message });
             }

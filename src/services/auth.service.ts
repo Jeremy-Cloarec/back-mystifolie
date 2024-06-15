@@ -1,6 +1,7 @@
 import bcrypt from 'bcrypt';
 import { User } from '../models/user.model';
 import { CreateUserDTO } from '../dtos/user.dto/createUser.dto';
+import { log } from 'console';
 
 class AuthService {
     public async register(createUserDTO: CreateUserDTO): Promise<User | null> {
@@ -9,6 +10,8 @@ class AuthService {
         // Check if user already exists
         const existingUser = await User.findOne({ where: { mail } });
         if (existingUser) {
+            console.log('Email already in use');
+            
             throw new Error('Email already in use');
         }
 
