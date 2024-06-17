@@ -1,9 +1,12 @@
 import bcrypt from 'bcrypt';
+const jwt = require('jsonwebtoken');
 import { User } from '../models/user.model';
 import { CreateUserDTO } from '../dtos/user.dto/createUser.dto';
-import { log } from 'console';
+
 
 class AuthService {
+    private secretKey: string = process.env.TOKEN_SECRET;
+
     public async register(createUserDTO: CreateUserDTO): Promise<User | null> {
         const { nom, mdp, mail } = createUserDTO;
 
@@ -24,9 +27,18 @@ class AuthService {
         const { mail, mdp } = CreateUserDTO;
         const user = await User.findOne({ where: { mail } });
         if (user && (await bcrypt.compare(mdp, user.mdp))) {
+            const token = jwt.sign({ id: user.id }, this.secretKey, { expiresIn: '1h' });
             return user;
         }
         return null;
+    }
+
+    public verifyToken(token: string): any {
+        try {
+            return jwt.verify(token, this.secretKey);
+        } catch (error) {
+            return null;
+        }
     }
 }
 

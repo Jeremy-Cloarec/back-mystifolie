@@ -7,6 +7,7 @@ import express from 'express'
 import favicon from 'serve-favicon'
 import cors from 'cors'
 import helmet from 'helmet'
+const jwt = require('jsonwebtoken')
 
 //Importing routes
 import activityRoute from './routers/activity.router'
