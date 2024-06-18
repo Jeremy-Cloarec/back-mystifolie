@@ -23,12 +23,12 @@ class AuthService {
         return user;
     }
 
-    public async login(CreateUserDTO: CreateUserDTO): Promise<User | null> {
+    public async login(CreateUserDTO: CreateUserDTO): Promise<{ user: User; token: string } | null> {
         const { mail, mdp } = CreateUserDTO;
         const user = await User.findOne({ where: { mail } });
         if (user && (await bcrypt.compare(mdp, user.mdp))) {
             const token = jwt.sign({ id: user.id }, this.secretKey, { expiresIn: '1h' });
-            return user;
+            return {user, token};
         }
         return null;
     }

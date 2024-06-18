@@ -21,11 +21,11 @@ class AuthController {
     public async login(req: Request, res: Response): Promise<Response> {
         try {
             const createUserDTO: CreateUserDTO = req.body;
-            const user = await authService.login(createUserDTO);
-            if (!user) {
+            const result = await authService.login(createUserDTO);
+            if (!result) {
                 return res.status(401).json({ message: 'Invalid credentials' });
             }
-            return res.status(200).json(user);
+            return res.status(200).json(result);
         } catch (error) {
             return res.status(500).json({ message: error.message });
         }
