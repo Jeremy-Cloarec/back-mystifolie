@@ -1,12 +1,13 @@
 import { Router } from "express";
 import { UserController } from '../controllers/user.controller'
+import { authenticateJWT } from '../middlewares/auth.middlewares'
 
 const router = Router();
 
-router.get('/', UserController.getAll)
-router.get('/:id', UserController.get)
-router.post('/', UserController.post)
-router.put('/:id', UserController.put)
-router.delete('/:id', UserController.delete)
+router.get('/', authenticateJWT, UserController.getAll)
+router.get('/:id', authenticateJWT, UserController.get)
+router.post('/', authenticateJWT, UserController.post)
+router.put('/:id', authenticateJWT, UserController.put)
+router.delete('/:id', authenticateJWT, UserController.delete)
 
 export default router
